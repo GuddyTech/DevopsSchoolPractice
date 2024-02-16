@@ -1,0 +1,8 @@
+# signup-service/Dockerfile
+FROM node:14
+WORKDIR /Deployment/DevOpspracticeex1/signup
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "signup-service.js"]

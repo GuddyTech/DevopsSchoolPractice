@@ -1,0 +1,8 @@
+# customer_review_service-service/Dockerfile
+FROM node:14
+WORKDIR /Deployment/DevOpspracticeex1/customer_review_service
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "review-service.js"]

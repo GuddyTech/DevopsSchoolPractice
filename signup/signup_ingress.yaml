@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: signup-ingress
+spec:
+  rules:
+    - host: signup.yourdomain.com
+      http:
+        paths:
+          - path: /signup
+            pathType: Prefix
+            backend:
+              service:
+                name: signup-service
+                port:
+                  number: 80

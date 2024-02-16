@@ -1,0 +1,20 @@
+/* SignupService.css */
+
+/* Styles for the entire SignupService container */
+.signup {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #a41818;
+}
+
+/* Header style */
+.signup1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Add more styles for your form elements here */
+/* Example: input fields, buttons, labels, etc. */

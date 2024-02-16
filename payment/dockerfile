@@ -1,0 +1,8 @@
+# payment-service/Dockerfile
+FROM node:14
+WORKDIR /Deployment/DevOpspracticeex1/payment
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "payment-service.js"]

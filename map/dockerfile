@@ -1,0 +1,8 @@
+# map-service/Dockerfile
+FROM node:14
+WORKDIR /Deployment/DevOpspracticeex1/map
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "map-service.js"]

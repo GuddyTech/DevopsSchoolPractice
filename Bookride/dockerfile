@@ -1,0 +1,9 @@
+# Bookride-service/Dockerfile
+FROM node:14
+WORKDIR /Deployment/DevOpspracticeex1/Bookride
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "bookride-service.js"]
++
