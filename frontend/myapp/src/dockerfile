@@ -1,0 +1,8 @@
+# Bookride-service/Dockerfile
+FROM node:14
+WORKDIR /home/fnp/Deployment-practice-transport/DevOpspracticeex1/frontend/myapp/src/
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["node", "App.js"]
