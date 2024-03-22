@@ -1,7 +1,9 @@
-Install cors in all the frontend service' paths
+# How to start the server
 
-npm install cors
+## Install cors in all the frontend service' paths
 
-Before running the backend server:
+#### npm install cors
 
-node backend-server.js
+## Before running the backend server:
+
+#### node backend-server.js
