@@ -1,28 +1,24 @@
-// map-service.js
-const { Kafka } = require('kafkajs');
 const express = require('express');
+const cors = require('cors');
 const app = express();
-app.use(express.json());
 
-const kafka = new Kafka({
-  clientId: 'map-service',
-  brokers: ['kafka:9092']
+// Enable CORS
+app.use(cors());
+
+// GET directions
+app.get('/directions', (req, res) => {
+  const { origin, destination } = req.query;
+  if (!origin || !destination) {
+    res.status(400).json({ message: 'Origin and destination are required' });
+  } else {
+    // Here you would typically integrate with a mapping service (like Google Maps) to get directions
+    // For demonstration purposes, we'll simply respond with a success message
+    const directions = `Directions from ${origin} to ${destination}`;
+    res.status(200).json({ directions });
+  }
 });
 
-const producer = kafka.producer();
-
-app.post('/map/update', async (req, res) => {
-  const { locationData } = req.body;
-  await producer.connect();
-  await producer.send({
-    topic: 'map-topic',
-    messages: [{ value: JSON.stringify({ locationData }) }],
-  });
-  await producer.disconnect();
-  res.status(200).send('Map updated successfully');
-});
-
-const PORT = 3003;
+const PORT = 30223;
 app.listen(PORT, () => {
   console.log(`Map service running on port ${PORT}`);
 });

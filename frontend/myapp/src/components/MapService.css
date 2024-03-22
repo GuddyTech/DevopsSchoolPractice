@@ -1,0 +1,26 @@
+.map-container {
+    /* max-width: 600px; */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #264f7e85;
+  }
+  
+  .map-title {
+    margin-bottom: 10px;
+  }
+  
+  /* .map-image {
+    max-width: 100%;
+    margin-top: 20px;
+  } */
+
+  .map-image {
+    border-radius: 200px;
+    /* background-color: #ffffff; */
+  }
+  

@@ -1,14 +1,30 @@
 /* SignupService.css */
 
 /* Styles for the entire SignupService container */
-.signup {
+.signup-container {
     margin: 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #a41818;
+    background-color: #264f7e85;
+    text-align: center;
 }
-
+/* .review-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .review-title {
+    margin-bottom: 10px;
+  }
+  
+  .review-image {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  */
 /* Header style */
 .signup1 {
     color: #333;

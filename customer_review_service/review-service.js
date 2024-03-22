@@ -1,28 +1,39 @@
-// review-service.js
-const { Kafka } = require('kafkajs');
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+// Enable CORS
+app.use(cors());
+// Parse JSON bodies
 app.use(express.json());
 
-const kafka = new Kafka({
-  clientId: 'review-service',
-  brokers: ['kafka:9092']
+// Sample data - replace this with your actual data source or database
+let reviews = [];
+
+// GET all reviews
+app.get('/reviews', (req, res) => {
+  res.json(reviews);
 });
 
-const producer = kafka.producer();
-
-app.post('/review/submit', async (req, res) => {
-  const { userId, reviewDetails } = req.body;
-  await producer.connect();
-  await producer.send({
-    topic: 'review-topic',
-    messages: [{ value: JSON.stringify({ userId, reviewDetails }) }],
-  });
-  await producer.disconnect();
-  res.status(200).send('Review submitted successfully');
+// POST a new review
+app.post('/reviews', (req, res) => {
+  const { userId, review } = req.body;
+  if (!userId || !review) {
+    res.status(400).json({ message: 'UserId and review are required' });
+  } else {
+    const newReview = { userId, review };
+    reviews.push(newReview);
+    res.status(201).json(newReview);
+  }
 });
 
-const PORT = 3004;
+// DELETE all reviews
+app.delete('/reviews', (req, res) => {
+  reviews = [];
+  res.status(204).send();
+});
+
+const PORT = 3010; // Use a different port for the review service
 app.listen(PORT, () => {
   console.log(`Review service running on port ${PORT}`);
 });

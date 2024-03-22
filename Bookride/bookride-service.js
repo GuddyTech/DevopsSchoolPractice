@@ -1,29 +1,39 @@
-// bookride-service.js
-const { Kafka } = require('kafkajs');
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+// Enable CORS
+app.use(cors());
+// Parse JSON bodies
 app.use(express.json());
 
-const kafka = new Kafka({
-  clientId: 'bookride-service',
-  brokers: ['kafka:9092']
+// Sample data - replace this with your actual data source or database
+let bookings = [];
+
+// GET all bookings
+app.get('/bookings', (req, res) => {
+  res.json(bookings);
 });
 
-const producer = kafka.producer();
-
-app.post('/bookride', async (req, res) => {
+// POST a new booking
+app.post('/bookings', (req, res) => {
   const { userId, rideDetails } = req.body;
-  await producer.connect();
-  await producer.send({
-    topic: 'bookride-topic',
-    messages: [{ value: JSON.stringify({ userId, rideDetails }) }],
-  });
-  await producer.disconnect();
-  res.status(200).send('Ride booked successfully');
+  if (!userId || !rideDetails) {
+    res.status(400).json({ message: 'UserId and rideDetails are required' });
+  } else {
+    const newBooking = { userId, rideDetails };
+    bookings.push(newBooking);
+    res.status(201).json(newBooking);
+  }
 });
 
-const PORT = 3001;
+// DELETE all bookings
+app.delete('/bookings', (req, res) => {
+  bookings = [];
+  res.status(204).send();
+});
+
+const PORT = 3009;
 app.listen(PORT, () => {
-  console.log(`Bookride service running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
-
