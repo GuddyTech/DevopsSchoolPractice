@@ -16,9 +16,11 @@ function ReviewService() {
       });
       // If successful, alert the user
       alert('Review posted successfully');
+      console.log('The review service is now running')
     } catch (error) {
       // If an error occurs, log it to the console and alert the user
       console.error('Error posting review:', error);
+      console.log('The review service is not running')
       alert('Error posting review. Please check the console for more details.');
     }
   };
