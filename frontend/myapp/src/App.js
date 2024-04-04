@@ -2,11 +2,11 @@
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
-import MapService from './components/MapService';
-import PaymentService from './components/PaymentService';
-import SignupService from './components/SignupService';
-import ReviewService from './components/ReviewService';
-import BookRideService from './components/BookRideService';
+import MapService from './components/MapService/MapService';
+import PaymentService from './components/PaymentService/PaymentService';
+import SignupService from './components/SignupService/SignupService';
+import ReviewService from './components/ReviewService/ReviewService';
+import BookRideService from './components/BookRideService/BookRideService';
 
 // const MapService = () => <div><h2>Map Microservice</h2></div>;
 // const PaymentService = () => <div><h2>Payment Microservice</h2></div>;
